@@ -91,3 +91,6 @@ that the wave itself repeats a dosen of times. A wave cycle is basically when a 
 
 ![A Animation To Understand it better](https://www.tremblingsandwarblings.com/wp-content/uploads/2017/03/planewave_modified_todouble1.gif)
 
+
+[Animation by Ralph T. Muehleisen](https://www.tremblingsandwarblings.com/2017/03/musical-sound-pitch-loudness/)
+
