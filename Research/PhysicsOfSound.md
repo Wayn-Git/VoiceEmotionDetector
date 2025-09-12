@@ -55,13 +55,13 @@ When we disturb a rope it forms waves, originally the rope was at rest a straigh
 
 [Article Read](https://www.physicsclassroom.com/class/waves/lesson-2/the-anatomy-of-a-wave)
 
-### Frequecy
+### Frequency
 
-Frecuency is basically the number of times a sound wave repeats itself, It's measured in hertz.
+Frequency is basically the number of times a sound wave repeats itself, It's measured in hertz.
 
-- High frequency is when the wave repeats faster in a single second (Less gap between each wave) (Has a shorter wavelenght)
+- High Frequency is when the wave repeats faster in a single second (Less gap between each wave) (Has a shorter wavelength)
 
-- Low freqncy is when the wave repeats slower in a single second (More gap between each wave)(Has a longer wavelength)
+- Low Frequency is when the wave repeats slower in a single second (More gap between each wave)(Has a longer wavelength)
 
 ![Frequency Diagram](https://i0.wp.com/silvergravy.com/wp-content/uploads/2012/04/high_low_freq2.jpg)
 
@@ -69,11 +69,11 @@ Frecuency is basically the number of times a sound wave repeats itself, It's mea
 
 
 
-### Wavelngth
+### Wave length
 
 
 
-A wave length can be defined as the lenght of a single wave cycle, we can observe 
+A wave length can be defined as the length of a single wave cycle, we can observe 
 
 *The wavelength is the distance from crest to crest (or from trough to trough)*
 
