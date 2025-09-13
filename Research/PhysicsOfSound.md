@@ -1,7 +1,5 @@
 # Physics Behind Sound For Better Understanding
 
----
-
 ## Abstract
 **Voice Emotion Detector**, I decided to work with this project as I thought this would help me inteigrate it in my future projects. *I have this one project*.
 
