@@ -207,13 +207,6 @@ For smaller projects:
 
 - Use Librosa + sklearn classifiers (SVM, Random Forest, Logistic Regression) as lightweight baselines.
 
-#### Librosa + sklearn → for small projects
-
-#### Hugging Face models 
-#### Wav2Vec2
-#### HuBERT
-#### Whisper
-
 ## Training Pipeline
 
 Training Pipeline
