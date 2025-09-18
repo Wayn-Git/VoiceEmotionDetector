@@ -124,13 +124,56 @@ Common Ratios ->
 
 ## Converting audio data to model’s expected input
 
+Raw waveforms are not directly fed into most deep learning models because they’re too high-dimensional and contain redundant information. Instead, we extract compact, informative features.
+
 #### Features Extracted from Audio
 
 ##### Spectrogram (via Short-Time Fourier Transform)
 
+- Breaks the signal into overlapping time windows and applies Fourier Transform.
+- Produces a 2D time-frequency representation.
+- Useful for general sound recognition tasks.
+
+```bash
+import librosa, librosa.display
+import matplotlib.pyplot as plt
+
+y, sr = librosa.load("example.wav", sr=16000)
+D = librosa.stft(y)
+S_db = librosa.amplitude_to_db(abs(D), ref=np.max)
+
+plt.figure(figsize=(10, 4))
+librosa.display.specshow(S_db, sr=sr, x_axis='time', y_axis='hz')
+plt.colorbar()
+plt.title('Spectrogram')
+plt.show()
+```
+
 ##### Mel Spectrogram (maps frequencies to human ear scale)
 
+- Maps frequencies to the Mel scale (human ear’s perception).
+- More compact and effective than raw spectrograms.
+- Widely used in speech and music tasks.
+
+```bash
+S = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=128)
+S_db = librosa.power_to_db(S, ref=np.max)
+```
+
 ##### MFCCs (Mel-Frequency Cepstral Coefficients)
+
+- Extracts spectral envelope of audio.
+- Captures the timbre and phonetic information of speech.
+- Most popular for speech recognition.
+
+```bash
+mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)
+```
+
+Rule of thumb:
+For speech recognition → MFCCs
+For music/sound event recognition → Mel spectrograms
+For raw general sound tasks → Spectrogram or learn directly from waveform (if model supports it)
 
 ---
 
@@ -139,7 +182,14 @@ Common Ratios ->
 ### **Classical Models**
 
 #### CNNs
+- Best for spectrogram-like 2D inputs.
+- Extract local time-frequency features.
+- Good baseline for audio classification.
+
 #### RNNs 
+- Handle sequential nature of audio.
+- Useful for speech recognition, emotion detection.
+- Weak on long sequences (can forget context).
 
 ### **Modern Models**
 
@@ -147,24 +197,59 @@ Common Ratios ->
 
 ### **Pretrained Models** (transfer learning)
 
-#### Librosa + sklearn → for small projects
+When dataset is small, transfer learning is crucial.
+- Wav2Vec2: Pretrained by Facebook on raw waveforms. State-of-the-art for speech recognition.
+- HuBERT: Learns hidden units from raw speech, strong for ASR & speaker tasks.
+- Whisper (OpenAI): Multilingual ASR + translation.
+- YAMNet (Google): For sound event detection, pretrained on AudioSet.
 
-#### Hugging Face models 
-#### Wav2Vec2
-#### HuBERT
-#### Whisper
+For smaller projects:
+
+- Use Librosa + sklearn classifiers (SVM, Random Forest, Logistic Regression) as lightweight baselines.
 
 ## Training Pipeline
 
-Optimizer (Adam, SGD, RMSprop)
+Training Pipeline
 
-Loss function (Cross-entropy for classification, MSE for regression)
+Optimizer
 
-Learning rate schedules
+Adam → fast convergence, standard choice.
 
-Batch size, number of epochs
+SGD + momentum → better generalization but slower.
 
-Regularization (Dropout, Weight Decay, Early Stopping)
+RMSProp → useful for RNNs.
+
+Loss Function
+
+Classification → Cross-Entropy.
+
+Regression (like emotion intensity) → MSE or MAE.
+
+Contrastive tasks → Triplet or Contrastive Loss.
+
+Learning Rate Scheduling
+
+Start high, reduce on plateau.
+
+Cyclical learning rate can help avoid local minima.
+
+Batch Size & Epochs
+
+Batch: 16–64 for audio (depends on GPU memory).
+
+Epochs: 20–100, but use early stopping.
+
+Regularization
+
+Dropout on dense layers.
+
+Weight decay (L2 regularization).
+
+Data augmentation:
+
+Time masking, frequency masking (SpecAugment).
+
+Pitch shifting, time stretching.
 
 ## Evaluation & Challenges  
 - Accuracy, Precision, Recall, F1-score  
