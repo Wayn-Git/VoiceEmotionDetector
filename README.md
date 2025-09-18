@@ -6,8 +6,8 @@ A machine learning tool that will analyze audio files to detect emotional states
 
 ## Status
 - [x] Research phase
-- [ ] Model architecture design
-- [ ] Dataset collection
+- [x] Model architecture design
+- [x] Dataset collection
 - [ ] Initial implementation
 - [ ] Testing & validation
 
